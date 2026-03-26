@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Stop-Credit — Займы под 0% без условий</title>
+<title>Stop-credit — Займы под 0% без условий</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -23,6 +23,7 @@ body{background:var(--bg);color:var(--w);font-family:'Inter',sans-serif;overflow
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.3}}
 @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .fu{opacity:0;animation:fadeUp .8s cubic-bezier(.16,1,.3,1) both}
 .fu1{animation-delay:.1s}.fu2{animation-delay:.22s}.fu3{animation-delay:.36s}.fu4{animation-delay:.5s}
 
@@ -31,7 +32,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;height:56px;padding:0 52px;d
 nav.sc{background:rgba(8,8,8,.95);backdrop-filter:blur(20px);border-bottom-color:var(--b)}
 .logo{font-size:.95rem;font-weight:800;color:var(--w);text-decoration:none;letter-spacing:-.3px}
 .logo em{font-style:normal;color:var(--w3)}
-.nav-r{display:flex;align-items:center;gap:32px}
+.nav-r{display:flex;align-items:center;gap:24px}
 .nav-r a{color:var(--w3);text-decoration:none;font-size:.78rem;font-weight:500;transition:color .2s;position:relative}
 .nav-r a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--w);transform:scaleX(0);transform-origin:left;transition:transform .2s}
 .nav-r a:hover{color:var(--w)}.nav-r a:hover::after{transform:scaleX(1)}
@@ -79,8 +80,17 @@ nav.sc{background:rgba(8,8,8,.95);backdrop-filter:blur(20px);border-bottom-color
 .si-txt{font-size:.56rem;letter-spacing:2px;text-transform:uppercase;color:var(--w4)}
 .si-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--w4),transparent);animation:scrollLine 2s ease-in-out infinite}
 
+/* ── PARTNER LOGOS ── */
+.partners{border-top:1px solid var(--b);border-bottom:1px solid var(--b);background:var(--s1);padding:20px 0;overflow:hidden;position:relative}
+.partners::before,.partners::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2}
+.partners::before{left:0;background:linear-gradient(to right,var(--s1),transparent)}
+.partners::after{right:0;background:linear-gradient(to left,var(--s1),transparent)}
+.partners-track{display:flex;gap:60px;align-items:center;width:max-content;animation:marquee 18s linear infinite}
+.partner-name{font-size:.78rem;font-weight:600;color:var(--w4);white-space:nowrap;letter-spacing:.3px;transition:color .2s}
+.partner-name:hover{color:var(--w)}
+
 /* ── STATS ── */
-.stats{background:var(--s1);border-top:1px solid var(--b);border-bottom:1px solid var(--b);display:flex}
+.stats{background:var(--bg);border-bottom:1px solid var(--b);display:flex}
 .sc-cell{flex:1;padding:26px 20px;text-align:center;border-right:1px solid var(--b)}
 .sc-cell:last-child{border-right:none}
 .sc-n{font-size:1.9rem;font-weight:900;letter-spacing:-1.5px;color:var(--w);line-height:1;margin-bottom:4px}
@@ -93,6 +103,7 @@ nav.sc{background:rgba(8,8,8,.95);backdrop-filter:blur(20px);border-bottom-color
 .s-tag::before{content:'';width:4px;height:4px;background:var(--w4);border-radius:50%}
 h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:0}
 h2 em{font-style:normal;color:var(--w3)}
+.section-sub{font-size:.85rem;color:var(--w3);margin-top:14px;line-height:1.6}
 .filter-bar{display:flex;gap:10px;margin-top:36px;flex-wrap:wrap;align-items:center;background:var(--s1);border:1px solid var(--b);border-radius:14px;padding:16px 20px}
 .filter-label{font-size:.68rem;color:var(--w4);font-weight:600;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
 .filter-chips{display:flex;gap:6px;flex-wrap:wrap}
@@ -100,64 +111,58 @@ h2 em{font-style:normal;color:var(--w3)}
 .chip:hover,.chip.active{background:var(--w);color:#000;border-color:var(--w)}
 .filter-sep{width:1px;height:24px;background:var(--b);flex-shrink:0}
 
-/* ── LOAN CARDS GRID ── */
-.loans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
-.loan-card{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:22px;transition:all .25s;position:relative;overflow:hidden}
+/* ── LOAN CARDS ── */
+.loans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.loan-card{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:20px;transition:all .25s;position:relative;overflow:hidden;display:flex;flex-direction:column}
 .loan-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
 .loan-card:hover{border-color:var(--b2);transform:translateY(-3px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
 .loan-card.featured{border-color:var(--b2)}
 .loan-card.featured::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
-.loan-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.loan-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .loan-name{font-size:.88rem;font-weight:700;color:var(--w)}
 .loan-badge{font-size:.6rem;font-weight:700;padding:3px 8px;border-radius:100px;background:var(--w);color:#000}
 .loan-badge.new{background:var(--w5);color:var(--w3);border:1px solid var(--b2)}
-.loan-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:18px}
+.loan-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
 .ls-item{}
-.ls-val{font-size:1.1rem;font-weight:800;letter-spacing:-.5px;color:var(--w);margin-bottom:2px}
-.ls-label{font-size:.62rem;color:var(--w4)}
-.loan-tag{display:inline-flex;align-items:center;gap:5px;font-size:.62rem;color:var(--w4);margin-bottom:16px}
+.ls-val{font-size:1rem;font-weight:800;letter-spacing:-.5px;color:var(--w);margin-bottom:2px}
+.ls-label{font-size:.6rem;color:var(--w4)}
+.loan-tag{display:inline-flex;align-items:center;gap:5px;font-size:.62rem;color:var(--w4);margin-bottom:14px;flex:1}
 .loan-tag::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--w4)}
 .loan-card.featured .loan-tag::before{background:var(--w);opacity:.6}
 
 /* ── HOW ── */
 .how-section{background:var(--s1);border-top:1px solid var(--b);padding:100px 52px}
 .how-inner{max-width:1200px;margin:0 auto}
-.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--b);border-radius:16px;overflow:hidden;margin-top:52px}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b);border-radius:16px;overflow:hidden;margin-top:52px}
 .how-cell{background:var(--card);padding:32px 24px}
 .how-n{font-size:3.5rem;font-weight:900;letter-spacing:-3px;color:rgba(255,255,255,.04);line-height:1;margin-bottom:16px}
-.how-ico{font-size:1.2rem;margin-bottom:12px}
 .how-cell h3{font-size:.88rem;font-weight:700;margin-bottom:7px;color:var(--w)}
 .how-cell p{font-size:.75rem;color:var(--w3);line-height:1.65}
 
-/* ── PROS CONS ── */
-.proscons-section{padding:100px 52px;background:var(--bg)}
-.proscons-inner{max-width:1200px;margin:0 auto}
-.proscons-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
-.pc-box{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:30px}
-.pc-box h3{font-size:.88rem;font-weight:700;color:var(--w);margin-bottom:20px;display:flex;align-items:center;gap:8px}
-.pc-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.pc-list li{font-size:.8rem;color:var(--w3);line-height:1.6;display:flex;align-items:flex-start;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--b)}
-.pc-list li:last-child{border-bottom:none;padding-bottom:0}
-.pc-list li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--w4);flex-shrink:0;margin-top:7px}
+/* ── PAMYATKA (pros/cons + docs + repayment) ── */
+.pamyatka-section{padding:100px 52px;background:var(--bg)}
+.pamyatka-inner{max-width:1200px;margin:0 auto}
+.pamyatka-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
+.pm-box{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:28px}
+.pm-box.wide{grid-column:1/-1}
+.pm-box h3{font-size:.88rem;font-weight:700;color:var(--w);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--b)}
+.pm-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.pm-list li{font-size:.8rem;color:var(--w3);line-height:1.6;display:flex;align-items:flex-start;gap:10px}
+.pm-list li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--w4);flex-shrink:0;margin-top:7px}
+.pm-list li.plus::before{background:rgba(255,255,255,.5)}
+.pm-two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 
 /* ── REQUIREMENTS ── */
 .req-section{background:var(--s1);border-top:1px solid var(--b);padding:100px 52px}
-.req-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.req-list{display:flex;flex-direction:column;gap:1px;margin-top:52px;background:var(--b);border-radius:14px;overflow:hidden}
-.req-item{background:var(--card);padding:18px 22px;display:flex;align-items:center;gap:16px;transition:background .2s}
-.req-item:hover{background:var(--s2)}
-.req-num{font-size:.65rem;color:var(--w4);font-weight:600;min-width:20px}
-.req-text{font-size:.82rem;color:var(--w3)}
-.req-photo{border-radius:14px;overflow:hidden;position:relative;margin-top:52px}
-.req-photo img{width:100%;display:block;filter:brightness(.65) saturate(0.08)}
-.req-photo::after{content:'';position:absolute;inset:0;border-radius:14px;border:1px solid var(--b2);pointer-events:none}
-.req-photo-cap{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(to top,rgba(0,0,0,.9),transparent)}
-.req-photo-cap p{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6}
+.req-inner{max-width:1200px;margin:0 auto}
+.req-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b);border-radius:14px;overflow:hidden;margin-top:52px}
+.req-cell{background:var(--card);padding:22px 20px;display:flex;align-items:flex-start;gap:14px}
+.req-num{font-size:.62rem;color:var(--w4);font-weight:600;min-width:18px;margin-top:2px}
+.req-text{font-size:.82rem;color:var(--w3);line-height:1.5}
 
 /* ── FAQ ── */
 .faq-section{padding:100px 52px;background:var(--bg)}
 .faq-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
-.faq-left{}
 .faq-list{display:flex;flex-direction:column;margin-top:52px}
 .faq-item{border-bottom:1px solid var(--b);cursor:pointer}
 .faq-item:first-child{border-top:1px solid var(--b)}
@@ -167,7 +172,6 @@ h2 em{font-style:normal;color:var(--w3)}
 .faq-a{font-size:.78rem;color:var(--w3);line-height:1.7;padding-bottom:16px;display:none}
 .faq-item.open .faq-a{display:block}
 .faq-item.open .faq-plus{transform:rotate(45deg);color:var(--w)}
-/* FAQ right: info cards */
 .faq-cards{display:flex;flex-direction:column;gap:10px;margin-top:52px}
 .info-card{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:24px;transition:border-color .2s}
 .info-card:hover{border-color:var(--b2)}
@@ -185,7 +189,6 @@ h2 em{font-style:normal;color:var(--w3)}
 .form-row{display:flex;gap:8px}
 .inp{flex:1;background:var(--s2);border:1px solid var(--b);border-radius:9px;padding:13px 16px;color:var(--w);font-size:.83rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
 .inp::placeholder{color:var(--w4)}.inp:focus{border-color:var(--b3)}
-textarea.inp{resize:vertical}
 .form-note{font-size:.62rem;color:var(--w4);text-align:center;margin-top:4px}
 
 /* ── FOOTER ── */
@@ -208,22 +211,29 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
 .fbd{width:6px;height:6px;border-radius:50%;background:#000;animation:pulseDot 2s infinite}
 
 /* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .loans-grid{grid-template-columns:repeat(2,1fr)}
+}
 @media(max-width:1000px){
   .hero-inner{grid-template-columns:1fr;padding:100px 24px 60px}
   .hero-cards{display:none}
   nav{padding:0 24px}.nav-r a:not(.nav-btn){display:none}
-  .filter-section,.how-section,.proscons-section,.req-section,.faq-section,.cta-section{padding:70px 24px}
-  .loans-grid{grid-template-columns:1fr 1fr}
+  .filter-section,.how-section,.pamyatka-section,.req-section,.faq-section,.cta-section{padding:70px 24px}
   .how-grid{grid-template-columns:1fr 1fr}
-  .proscons-grid,.req-inner,.faq-inner{grid-template-columns:1fr}
+  .pamyatka-grid,.faq-inner{grid-template-columns:1fr}
+  .pm-two{grid-template-columns:1fr}
   .stats{flex-wrap:wrap}
   .sc-cell{min-width:50%;border-bottom:1px solid var(--b)}
   footer{padding:40px 24px 24px}.f-grid{grid-template-columns:1fr 1fr;gap:28px}
   .f-bot{flex-direction:column;gap:10px}.legal{padding:12px 24px}
   .form-row{flex-direction:column}
   .float-btn{right:16px;bottom:16px}
+  .req-grid{grid-template-columns:1fr}
 }
-@media(max-width:600px){.loans-grid,.how-grid{grid-template-columns:1fr}}
+@media(max-width:600px){
+  .loans-grid,.how-grid{grid-template-columns:1fr}
+  .pamyatka-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -235,9 +245,10 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
   <a href="#" class="logo">Stop<em>-credit</em></a>
   <div class="nav-r">
     <a href="#loans">Займы</a>
-    <a href="#how">Как получить</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact" class="nav-btn">Подобрать →</a>
+    <a href="#how">Кредиты</a>
+    <a href="#faq">Карты</a>
+    <a href="#faq">Вклады</a>
+    <a href="#contact" class="nav-btn">Консультация</a>
   </div>
 </nav>
 
@@ -254,7 +265,7 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
   <div class="hero-inner">
     <div>
       <div class="hero-tag fu fu1"><span class="tag-dot"></span>Подборка более 50 МФО · Обновлено сегодня</div>
-      <h1 class="fu fu2">Займы под <span class="accent">0%</span><br/>без условий</h1>
+      <h1 class="fu fu2">Займы под <span class="accent">0%!</span><br/>без условий</h1>
       <p class="hero-sub fu fu3">Подборка более 50 микрозаймов на самых выгодных условиях. Одобрение за 5 минут, деньги на карту мгновенно.</p>
       <div class="hero-actions fu fu4">
         <a href="#loans" class="btn btn-w">Выбрать займ →</a>
@@ -285,6 +296,37 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
   <div class="scroll-ind"><div class="si-txt">Скролл</div><div class="si-line"></div></div>
 </section>
 
+<!-- PARTNER LOGOS -->
+<div class="partners">
+  <div class="partners-track">
+    <span class="partner-name">Webbankir</span>
+    <span class="partner-name">Bistrodengi</span>
+    <span class="partner-name">Credit7</span>
+    <span class="partner-name">Dozarplaty</span>
+    <span class="partner-name">Skela</span>
+    <span class="partner-name">Займер</span>
+    <span class="partner-name">MaxCredit</span>
+    <span class="partner-name">WebZaym</span>
+    <span class="partner-name">АДеньги</span>
+    <span class="partner-name">ZaymiGo</span>
+    <span class="partner-name">НаДом</span>
+    <span class="partner-name">UM Finance</span>
+    <!-- duplicate for seamless loop -->
+    <span class="partner-name">Webbankir</span>
+    <span class="partner-name">Bistrodengi</span>
+    <span class="partner-name">Credit7</span>
+    <span class="partner-name">Dozarplaty</span>
+    <span class="partner-name">Skela</span>
+    <span class="partner-name">Займер</span>
+    <span class="partner-name">MaxCredit</span>
+    <span class="partner-name">WebZaym</span>
+    <span class="partner-name">АДеньги</span>
+    <span class="partner-name">ZaymiGo</span>
+    <span class="partner-name">НаДом</span>
+    <span class="partner-name">UM Finance</span>
+  </div>
+</div>
+
 <!-- STATS -->
 <div class="stats">
   <div class="sc-cell"><div class="sc-n" data-count="50" data-suffix="+">0</div><div class="sc-l">МФО партнёров</div></div>
@@ -298,7 +340,8 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
 <section class="filter-section" id="loans">
 <div class="filter-inner">
   <div class="s-tag">Займы</div>
-  <h2>Выбери <em>свой займ</em></h2>
+  <h2>Все <em>микрозаймы</em></h2>
+  <p class="section-sub">Прозрачные условия без % от проверенных компаний</p>
 
   <div class="filter-bar">
     <span class="filter-label">Срок:</span>
@@ -308,117 +351,168 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
       <button class="chip" onclick="setFilter(this,'срок','30')">30 дней</button>
     </div>
     <div class="filter-sep"></div>
-    <span class="filter-label">Тип:</span>
+    <span class="filter-label">Условия:</span>
     <div class="filter-chips">
-      <button class="chip active" onclick="setFilter(this,'тип','0')">Без процентов (0%)</button>
+      <button class="chip active" onclick="setFilter(this,'тип','0')">Без процентов / 0%</button>
       <button class="chip" onclick="setFilter(this,'тип','%')">С процентами</button>
     </div>
   </div>
 
   <div class="loans-grid" id="loans-grid">
+
     <div class="loan-card featured">
       <div class="loan-top"><div class="loan-name">Займер</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">до 30 000₽</div><div class="ls-label">Сумма</div></div>
-        <div class="ls-item"><div class="ls-val">до 30 дн</div><div class="ls-label">Срок</div></div>
+        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
-      <div class="loan-tag">Первый займ бесплатно</div>
+      <div class="loan-tag">Первый займ бесплатно · 30 дней</div>
       <a href="#contact" class="btn btn-w btn-full">Получить →</a>
     </div>
+
     <div class="loan-card featured">
       <div class="loan-top"><div class="loan-name">MaxCredit</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">до 15 000₽</div><div class="ls-label">Сумма</div></div>
-        <div class="ls-item"><div class="ls-val">до 21 дн</div><div class="ls-label">Срок</div></div>
+        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
-      <div class="loan-tag">Без проверки истории</div>
+      <div class="loan-tag">Без проверки истории · 30 дней</div>
       <a href="#contact" class="btn btn-w btn-full">Получить →</a>
     </div>
+
     <div class="loan-card featured">
       <div class="loan-top"><div class="loan-name">WebZaym</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">до 20 000₽</div><div class="ls-label">Сумма</div></div>
-        <div class="ls-item"><div class="ls-val">до 30 дн</div><div class="ls-label">Срок</div></div>
+        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
-      <div class="loan-tag">Одобрение за 2 минуты</div>
+      <div class="loan-tag">Одобрение за 2 минуты · 30 дней</div>
       <a href="#contact" class="btn btn-w btn-full">Получить →</a>
     </div>
-    <div class="loan-card">
-      <div class="loan-top"><div class="loan-name">Аденьги</div><div class="loan-badge new">Новый</div></div>
+
+    <div class="loan-card featured">
+      <div class="loan-top"><div class="loan-name">АДеньги</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">до 10 000₽</div><div class="ls-label">Сумма</div></div>
-        <div class="ls-item"><div class="ls-val">до 14 дн</div><div class="ls-label">Срок</div></div>
+        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
-      <div class="loan-tag">Только паспорт</div>
+      <div class="loan-tag">Только паспорт · 30 дней</div>
+      <a href="#contact" class="btn btn-w btn-full">Получить →</a>
+    </div>
+
+    <div class="loan-card">
+      <div class="loan-top"><div class="loan-name">Skela</div><div class="loan-badge new">Новый</div></div>
+      <div class="loan-stats">
+        <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
+        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
+      </div>
+      <div class="loan-tag">Моментальное решение · 30 дней</div>
       <a href="#contact" class="btn btn-o btn-full">Получить →</a>
     </div>
+
     <div class="loan-card">
       <div class="loan-top"><div class="loan-name">ZaymiGo</div><div class="loan-badge new">Новый</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">до 8 000₽</div><div class="ls-label">Сумма</div></div>
-        <div class="ls-item"><div class="ls-val">до 7 дн</div><div class="ls-label">Срок</div></div>
+        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
-      <div class="loan-tag">Моментальное решение</div>
+      <div class="loan-tag">Без справок о доходах · 30 дней</div>
       <a href="#contact" class="btn btn-o btn-full">Получить →</a>
     </div>
+
     <div class="loan-card">
       <div class="loan-top"><div class="loan-name">НаДом</div><div class="loan-badge new">Новый</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">до 25 000₽</div><div class="ls-label">Сумма</div></div>
-        <div class="ls-item"><div class="ls-val">до 30 дн</div><div class="ls-label">Срок</div></div>
+        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
-      <div class="loan-tag">Без справок о доходах</div>
+      <div class="loan-tag">Выдача на карту · 30 дней</div>
       <a href="#contact" class="btn btn-o btn-full">Получить →</a>
     </div>
+
+    <div class="loan-card">
+      <div class="loan-top"><div class="loan-name">UM Finance</div><div class="loan-badge new">Новый</div></div>
+      <div class="loan-stats">
+        <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
+        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
+      </div>
+      <div class="loan-tag">Круглосуточно онлайн · 30 дней</div>
+      <a href="#contact" class="btn btn-o btn-full">Получить →</a>
+    </div>
+
   </div>
 </div>
 </section>
 
-<!-- HOW -->
+<!-- HOW IT WORKS -->
 <section class="how-section" id="how">
 <div class="how-inner">
   <div class="s-tag">Как получить</div>
-  <h2>4 шага<br/>до <em>денег на карте</em></h2>
+  <h2>3 шага<br/>до <em>денег на карте</em></h2>
   <div class="how-grid">
-    <div class="how-cell"><div class="how-n">01</div><div class="how-ico">🔍</div><h3>Выбери предложение</h3><p>Используй фильтры по сроку и ставке. Выбери подходящий МФО из нашей подборки.</p></div>
-    <div class="how-cell"><div class="how-n">02</div><div class="how-ico">📱</div><h3>Заполни заявку</h3><p>Перейди на сайт МФО и заполни заявку онлайн. Только паспорт — никаких справок.</p></div>
-    <div class="how-cell"><div class="how-n">03</div><div class="how-ico">✅</div><h3>Получи решение</h3><p>Одобрение приходит за 5 минут в любое время суток. Подпиши договор через SMS-код.</p></div>
-    <div class="how-cell"><div class="how-n">04</div><div class="how-ico">💳</div><h3>Деньги на карту</h3><p>После одобрения деньги поступают на карту мгновенно. Без визитов в офис.</p></div>
+    <div class="how-cell">
+      <div class="how-n">01</div>
+      <h3>Выберите предложение</h3>
+      <p>Сравните процентные ставки, срок погашения, время обработки заявки и другие параметры. Нажмите «Оформить» у подходящего МФО.</p>
+    </div>
+    <div class="how-cell">
+      <div class="how-n">02</div>
+      <h3>Заполните анкету</h3>
+      <p>Перейдите на сайт выбранной МФО и заполните заявку онлайн. Потребуется только паспорт гражданина РФ — никаких справок.</p>
+    </div>
+    <div class="how-cell">
+      <div class="how-n">03</div>
+      <h3>Деньги на карту</h3>
+      <p>Подпишите договор через SMS-код. После одобрения средства мгновенно поступают на вашу карту — в любое время суток.</p>
+    </div>
   </div>
 </div>
 </section>
 
-<!-- PROS CONS -->
-<section class="proscons-section">
-<div class="proscons-inner">
-  <div class="s-tag">Плюсы и минусы</div>
-  <h2>Микрозаймы —<br/><em>честно о главном</em></h2>
-  <div class="proscons-grid" style="margin-top:52px">
-    <div class="pc-box">
-      <h3>✓ Преимущества</h3>
-      <ul class="pc-list">
-        <li>Быстрое оформление — одобрение за 5 минут онлайн без посещения офиса</li>
-        <li>Минимум документов — только паспорт, без справок о доходах</li>
-        <li>Одобряют с плохой кредитной историей или без неё</li>
-        <li>Работают круглосуточно — заявка в любое время суток</li>
-        <li>Первый займ часто под 0% — верни ровно столько, сколько взял</li>
+<!-- PAMYATKA -->
+<section class="pamyatka-section">
+<div class="pamyatka-inner">
+  <div class="s-tag">Памятка</div>
+  <h2>Всё что нужно<br/><em>знать о займах</em></h2>
+
+  <div class="pamyatka-grid">
+
+    <!-- Pros & Cons -->
+    <div class="pm-box">
+      <h3>Плюсы микрозаймов</h3>
+      <ul class="pm-list">
+        <li class="plus">Быстрое оформление — решение за 5–10 минут</li>
+        <li class="plus">Минимальный пакет документов — только паспорт</li>
+        <li class="plus">Возможность получить деньги даже с плохой кредитной историей</li>
+        <li class="plus">Круглосуточная подача заявки онлайн, 24/7</li>
       </ul>
     </div>
-    <div class="pc-box">
-      <h3>⚠ Недостатки</h3>
-      <ul class="pc-list">
-        <li>Высокая процентная ставка после льготного периода — важно вернуть вовремя</li>
-        <li>Короткий срок погашения — обычно до 30 дней</li>
-        <li>Риск долговой ямы при просрочке — начисляются штрафы и пени</li>
-        <li>Возможны дополнительные комиссии — читай договор внимательно</li>
+
+    <div class="pm-box">
+      <h3>Минусы микрозаймов</h3>
+      <ul class="pm-list">
+        <li>Высокие процентные ставки по сравнению с банковскими кредитами</li>
+        <li>Короткие сроки возврата — как правило до 30 дней</li>
+        <li>Риск попасть в долговую спираль при несвоевременном погашении</li>
+        <li>Возможные дополнительные комиссии и штрафы</li>
       </ul>
     </div>
+
+    <!-- Repayment -->
+    <div class="pm-box wide">
+      <h3>Условия погашения и штрафы за просрочку</h3>
+      <div class="pm-two">
+        <ul class="pm-list">
+          <li>Погашайте займ строго в срок, указанный в договоре</li>
+          <li>Доступные способы: личный кабинет, банковская карта, электронные кошельки, терминалы</li>
+        </ul>
+        <ul class="pm-list">
+          <li>Просрочка негативно влияет на кредитную историю и может привести к передаче долга коллекторам</li>
+          <li>Штрафы и пени начисляются согласно условиям договора</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </div>
 </section>
@@ -426,23 +520,15 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
 <!-- REQUIREMENTS -->
 <section class="req-section">
 <div class="req-inner">
-  <div>
-    <div class="s-tag">Требования</div>
-    <h2>Что нужно<br/>для <em>получения займа</em></h2>
-    <div class="req-list">
-      <div class="req-item"><span class="req-num">01</span><span class="req-text">Возраст от 18 лет</span></div>
-      <div class="req-item"><span class="req-num">02</span><span class="req-text">Паспорт гражданина РФ (некоторые МФО просят СНИЛС или ИНН)</span></div>
-      <div class="req-item"><span class="req-num">03</span><span class="req-text">Постоянная регистрация на территории России</span></div>
-      <div class="req-item"><span class="req-num">04</span><span class="req-text">Действующий номер мобильного телефона</span></div>
-      <div class="req-item"><span class="req-num">05</span><span class="req-text">Банковская карта для получения денег</span></div>
-      <div class="req-item"><span class="req-num">06</span><span class="req-text">Стабильный доход (справка обычно не нужна)</span></div>
-    </div>
-  </div>
-  <div>
-    <div class="req-photo">
-      <img src="img-lawyer.png" alt=""/>
-      <div class="req-photo-cap"><p>Большинство МФО одобряют займ за 5 минут по одному только паспорту — без звонков работодателю и справок о доходах</p></div>
-    </div>
+  <div class="s-tag">Требования</div>
+  <h2>Документы и<br/><em>требования к клиентам</em></h2>
+  <div class="req-grid" style="margin-top:52px">
+    <div class="req-cell"><div class="req-num">01</div><div class="req-text">Паспорт гражданина РФ — основной документ. Некоторые МФО могут запросить СНИЛС или ИНН.</div></div>
+    <div class="req-cell"><div class="req-num">02</div><div class="req-text">Возраст от 18 лет</div></div>
+    <div class="req-cell"><div class="req-num">03</div><div class="req-text">Постоянная регистрация на территории России</div></div>
+    <div class="req-cell"><div class="req-num">04</div><div class="req-text">Действующий мобильный телефон для связи и подписи договора</div></div>
+    <div class="req-cell"><div class="req-num">05</div><div class="req-text">Банковская карта для получения средств</div></div>
+    <div class="req-cell"><div class="req-num">06</div><div class="req-text">Стабильный доход — обычно без подтверждения документами</div></div>
   </div>
 </div>
 </section>
@@ -450,41 +536,61 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
 <!-- FAQ -->
 <section class="faq-section" id="faq">
 <div class="faq-inner">
-  <div class="faq-left">
-    <div class="s-tag">FAQ · Памятка</div>
-    <h2>Ответы<br/>на <em>частые вопросы</em></h2>
+  <div>
+    <div class="s-tag">FAQ</div>
+    <h2>Частые<br/><em>вопросы</em></h2>
     <div class="faq-list">
-      <div class="faq-item open"><div class="faq-q">Каковы плюсы и минусы микрозаймов?<span class="faq-plus">+</span></div><div class="faq-a">Плюсы: быстрое оформление онлайн, минимум документов, одобряют даже с плохой КИ, работают 24/7. Минусы: высокая ставка после льготного периода, короткий срок, риск штрафов при просрочке.</div></div>
-      <div class="faq-item"><div class="faq-q">Какие документы нужны для займа?<span class="faq-plus">+</span></div><div class="faq-a">Как правило, только паспорт гражданина РФ. Некоторые организации дополнительно просят СНИЛС или ИНН. Справки о доходах и поручители не нужны.</div></div>
-      <div class="faq-item"><div class="faq-q">Как взять займ на карту онлайн?<span class="faq-plus">+</span></div><div class="faq-a">Выбери предложение из нашей подборки → заполни заявку на сайте МФО → подпиши договор через SMS-код → деньги поступят на карту мгновенно после одобрения.</div></div>
-      <div class="faq-item"><div class="faq-q">Что будет если не вернуть вовремя?<span class="faq-plus">+</span></div><div class="faq-a">Начисляются штрафы и пени согласно договору, это негативно влияет на кредитную историю. При длительной просрочке долг может быть передан коллекторам. Рекомендуем не допускать просрочки.</div></div>
-      <div class="faq-item"><div class="faq-q">Как погасить займ?<span class="faq-plus">+</span></div><div class="faq-a">Через личный кабинет МФО, банковской картой, электронными кошельками или через терминалы. Погашай строго в срок, указанный в договоре.</div></div>
+
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">Как взять займ на карту онлайн?<span class="faq-plus">+</span></div>
+        <div class="faq-a">Выберите подходящее предложение в нашей подборке и нажмите «Оформить». Заполните анкету на сайте МФО и отправьте заявку. Подпишите договор с помощью СМС-кода — деньги поступят на карту мгновенно после одобрения.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Какие документы нужны для получения займа?<span class="faq-plus">+</span></div>
+        <div class="faq-a">Для получения микрозайма обычно требуется только паспорт гражданина РФ. Некоторые МФО могут запросить второй документ — СНИЛС или ИНН. Справки о доходах, как правило, не нужны.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Плюсы и минусы микрозаймов<span class="faq-plus">+</span></div>
+        <div class="faq-a">Плюсы: быстрое оформление, минимальный пакет документов, доступность даже с плохой КИ, заявка 24/7 онлайн. Минусы: высокие ставки по сравнению с банковскими кредитами, короткие сроки возврата, риск штрафов при просрочке.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Что будет при просрочке платежа?<span class="faq-plus">+</span></div>
+        <div class="faq-a">Просрочка негативно влияет на кредитную историю и может привести к передаче долга коллекторам. Штрафы и пени начисляются строго согласно договору. Рекомендуем своевременно погашать займ или заранее уведомить МФО о затруднениях.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Как сравнивать предложения МФО?<span class="faq-plus">+</span></div>
+        <div class="faq-a">Обратите внимание на процентную ставку, срок погашения, скорость обработки заявки, процент одобрения и отзывы пользователей. Наша подборка уже отобрала надёжные МФО с прозрачными условиями.</div>
+      </div>
+
     </div>
   </div>
 
-  <div class="faq-cards">
-    <div class="info-card">
-      <div class="info-card-label">Лучшее предложение сегодня</div>
-      <div class="info-card-val">0% на 30 дней</div>
-      <div class="info-card-sub">Первый займ без процентов · Займер, MaxCredit, WebZaym</div>
-    </div>
-    <div class="info-card">
-      <div class="info-card-label">Среднее время одобрения</div>
-      <div class="info-card-val">5 минут</div>
-      <div class="info-card-sub">Круглосуточно, включая выходные и праздники</div>
-    </div>
-    <div class="info-card">
-      <div class="info-card-label">Статистика за сегодня</div>
-      <div class="info-card-row">
-        <div><div style="font-size:1.2rem;font-weight:800">847</div><div style="font-size:.62rem;color:var(--w4)">заявок подано</div></div>
-        <div><div style="font-size:1.2rem;font-weight:800">98%</div><div style="font-size:.62rem;color:var(--w4)">одобрено</div></div>
-        <div><div style="font-size:1.2rem;font-weight:800">4.2 мин</div><div style="font-size:.62rem;color:var(--w4)">среднее время</div></div>
+  <div>
+    <div class="faq-cards">
+      <div class="info-card">
+        <div class="info-card-label">Первый займ</div>
+        <div class="info-card-val">0%</div>
+        <div class="info-card-sub">Большинство МФО выдают первый займ бесплатно на срок до 30 дней</div>
       </div>
-    </div>
-    <div class="info-card">
-      <div class="info-card-label">Максимальная сумма</div>
-      <div class="info-card-val">до 100 000₽</div>
-      <div class="info-card-sub">При повторных займах сумма увеличивается автоматически</div>
+      <div class="info-card">
+        <div class="info-card-label">Время одобрения</div>
+        <div class="info-card-val">5 минут</div>
+        <div class="info-card-sub">Решение по заявке приходит автоматически в любое время суток</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Партнёры в подборке</div>
+        <div class="info-card-val">50+ МФО</div>
+        <div class="info-card-sub">Только проверенные микрофинансовые организации с лицензией ЦБ РФ</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Срок займа</div>
+        <div class="info-card-val">7–30 дней</div>
+        <div class="info-card-sub">Фильтруйте по сроку и ставке для поиска лучшего предложения</div>
+      </div>
     </div>
   </div>
 </div>
@@ -492,140 +598,181 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
-  <div class="cta-inner">
-    <div class="s-tag" style="justify-content:center">Подобрать займ</div>
-    <h2>Деньги на карту<br/>за <em>5 минут</em></h2>
-    <p>Оставь заявку — подберём лучший займ под 0% специально для тебя. Без влияния на кредитную историю.</p>
-    <form class="form" onsubmit="return sub(event)">
-      <div class="form-row">
-        <input class="inp" type="text" placeholder="Имя" required/>
-        <input class="inp" type="tel" placeholder="+7 (___) ___-__-__" required/>
-      </div>
-      <div class="form-row">
-        <input class="inp" type="number" placeholder="Нужная сумма (₽)"/>
-        <select class="inp" style="appearance:none;cursor:pointer">
-          <option value="" disabled selected>Срок займа</option>
-          <option>7 дней</option><option>14 дней</option><option>30 дней</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-w btn-full" style="font-size:.88rem;padding:14px;border-radius:9px">Подобрать займ под 0% →</button>
-      <p class="form-note">Заявка не влияет на кредитную историю · Данные защищены</p>
-    </form>
+<div class="cta-inner">
+  <div class="s-tag" style="justify-content:center">Подобрать займ</div>
+  <h2>Найдём<br/><em>лучшее предложение</em></h2>
+  <p>Укажите нужную сумму и срок — мы покажем самые выгодные варианты из нашей подборки 50+ МФО.</p>
+  <div class="form">
+    <div class="form-row">
+      <input class="inp" type="number" placeholder="Сумма, ₽" min="1000" max="100000"/>
+      <select class="inp" style="cursor:pointer">
+        <option value="7">7 дней</option>
+        <option value="14">14 дней</option>
+        <option value="30" selected>30 дней</option>
+      </select>
+    </div>
+    <button class="btn btn-w btn-full" style="font-size:.9rem;padding:14px" onclick="this.textContent='Подбираем...'">Подобрать займ →</button>
+    <div class="form-note">Без кредитной истории · Только паспорт · Деньги на карту</div>
   </div>
+</div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="f-grid">
-    <div><div class="f-logo">Stop<em>-credit</em></div><div class="f-desc">Подборка лучших микрозаймов под 0%. Более 50 МФО партнёров. Обновляется ежедневно.</div></div>
-    <div class="f-col"><h4>Займы</h4><a href="#">Займы под 0%</a><a href="#">Займы на карту</a><a href="#">Займы онлайн</a><a href="#">Займы без отказа</a></div>
-    <div class="f-col"><h4>МФО</h4><a href="#">Займер</a><a href="#">MaxCredit</a><a href="#">WebZaym</a><a href="#">Аденьги</a></div>
-    <div class="f-col"><h4>Информация</h4><a href="#">О сервисе</a><a href="#">FAQ</a><a href="#">Как работает</a><a href="#">Контакты</a></div>
+    <div>
+      <div class="f-logo">Stop<em>-credit</em></div>
+      <div class="f-desc">Агрегатор микрозаймов под 0%. Подборка более 50 проверенных МФО на самых выгодных условиях.</div>
+    </div>
+    <div class="f-col">
+      <h4>Продукты</h4>
+      <a href="#loans">Займы</a>
+      <a href="#">Кредиты</a>
+      <a href="#">Карты</a>
+      <a href="#">Вклады</a>
+    </div>
+    <div class="f-col">
+      <h4>Информация</h4>
+      <a href="#faq">FAQ</a>
+      <a href="#how">Как получить</a>
+      <a href="#">Требования</a>
+      <a href="#">Памятка</a>
+    </div>
+    <div class="f-col">
+      <h4>Сервис</h4>
+      <a href="#contact">Консультация</a>
+      <a href="#">Обратная связь</a>
+      <a href="#">Партнёрам</a>
+    </div>
   </div>
-  <div class="f-bot"><span>© 2024–2026 Stop-credit.pro</span><span><a href="#">Конфиденциальность</a><a href="#">Отказ от ответственности</a></span></div>
+  <div class="f-bot">
+    <span>© 2025 Stop-credit. Все права защищены.</span>
+    <div>
+      <a href="#">Политика конфиденциальности</a>
+      <a href="#">Пользовательское соглашение</a>
+    </div>
+  </div>
 </footer>
-<div class="legal">Stop-credit.pro — информационный сервис сравнения займов. Не является кредитной организацией. Информация носит ознакомительный характер. Перед оформлением займа внимательно изучите условия договора. Процентные ставки и условия МФО могут изменяться.</div>
+
+<div class="legal">
+  Stop-credit.pro является агрегатором финансовых предложений и не осуществляет выдачу займов напрямую. Все МФО в нашей подборке имеют лицензию Банка России. Первый займ под 0% доступен новым клиентам на условиях партнёрских МФО. Перед оформлением внимательно ознакомьтесь с договором. Кредитование связано с рисками. Ставка 0% действует на первый займ на период до 30 дней.
+</div>
 
 <script>
-/* NAV */
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{nav.classList.toggle('sc',scrollY>40)},{passive:true});
-
-/* FAQ */
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.querySelector('.faq-q').addEventListener('click',()=>{
-    const o=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-    if(!o) item.classList.add('open');
-  });
+/* ── NAV ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('sc', window.scrollY > 10);
 });
 
-/* Filter chips */
-function setFilter(el,group,val){
-  el.closest('.filter-chips').querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+/* ── FILTER ── */
+function setFilter(el, group, val) {
+  el.closest('.filter-chips').querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
   el.classList.add('active');
 }
 
-/* Form */
-function sub(e){
-  e.preventDefault();
-  const b=e.target.querySelector('button');
-  b.textContent='✓ Заявка принята — подберём лучший вариант!';
-  b.disabled=true;b.style.opacity='.6';
-  return false;
+/* ── FAQ ── */
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
 }
 
-/* Particles */
-(()=>{
-  const c=document.getElementById('particles');if(!c)return;
-  const ctx=c.getContext('2d');let W,H,pts=[];
-  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight}
-  resize();window.addEventListener('resize',resize,{passive:true});
-  for(let i=0;i<50;i++)pts.push({x:Math.random()*1920,y:Math.random()*1080,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,r:Math.random()*1.1+.3,a:Math.random()});
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    for(let i=0;i<pts.length;i++){
-      const p=pts[i];p.x+=p.vx;p.y+=p.vy;
-      if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-      for(let j=i+1;j<pts.length;j++){
-        const q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<130){ctx.beginPath();ctx.strokeStyle=`rgba(255,255,255,${.05*(1-d/130)})`;ctx.lineWidth=.5;ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}
+/* ── COUNTER ANIMATION ── */
+function animateCount(el) {
+  const target = +el.dataset.count;
+  const suffix = el.dataset.suffix || '';
+  const duration = 1200;
+  const step = 16;
+  const increment = target / (duration / step);
+  let current = 0;
+  const timer = setInterval(() => {
+    current = Math.min(current + increment, target);
+    el.textContent = Math.floor(current) + suffix;
+    if (current >= target) clearInterval(timer);
+  }, step);
+}
+
+/* ── INTERSECTION OBSERVER ── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      if (el.dataset.count) animateCount(el);
+      if (el.classList.contains('reveal')) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
       }
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${p.a*.3})`;ctx.fill();
+      io.unobserve(el);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('[data-count]').forEach(el => io.observe(el));
+
+/* reveal on scroll */
+document.querySelectorAll('.loan-card, .how-cell, .pm-box, .req-cell, .info-card, .faq-item').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = `opacity .6s ${i * 0.05}s ease, transform .6s ${i * 0.05}s ease`;
+  el.classList.add('reveal');
+  io.observe(el);
+});
+
+/* ── PARTICLES ── */
+(function() {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let W, H, dots;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function Dot() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - .5) * .4;
+    this.vy = (Math.random() - .5) * .4;
+    this.r = Math.random() * 1.5 + .5;
+  }
+
+  dots = Array.from({length: 50}, () => new Dot());
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    dots.forEach(d => {
+      d.x += d.vx; d.y += d.vy;
+      if (d.x < 0 || d.x > W) d.vx *= -1;
+      if (d.y < 0 || d.y > H) d.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,.5)';
+      ctx.fill();
+    });
+    for (let i = 0; i < dots.length; i++) {
+      for (let j = i + 1; j < dots.length; j++) {
+        const dx = dots[i].x - dots[j].x;
+        const dy = dots[i].y - dots[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(dots[i].x, dots[i].y);
+          ctx.lineTo(dots[j].x, dots[j].y);
+          ctx.strokeStyle = `rgba(255,255,255,${.12 * (1 - dist / 120)})`;
+          ctx.lineWidth = .5;
+          ctx.stroke();
+        }
+      }
     }
     requestAnimationFrame(draw);
   }
   draw();
 })();
-
-/* Stagger fade-up */
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(en=>{
-    if(!en.isIntersecting)return;
-    const idx=[...en.target.parentElement.children].indexOf(en.target);
-    setTimeout(()=>{en.target.style.opacity='1';en.target.style.transform='translateY(0) scale(1)'},idx*70);
-    io.unobserve(en.target);
-  });
-},{threshold:.08});
-document.querySelectorAll('.loan-card,.how-cell,.pc-box,.req-item,.faq-item,.info-card,.sc-cell').forEach(el=>{
-  el.style.opacity='0';el.style.transform='translateY(20px) scale(0.98)';
-  el.style.transition='opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)';
-  io.observe(el);
-});
-
-/* h2 reveal */
-const h2io=new IntersectionObserver(entries=>{
-  entries.forEach(en=>{
-    if(!en.isIntersecting)return;
-    en.target.style.opacity='1';en.target.style.clipPath='inset(0 0 0% 0)';
-    h2io.unobserve(en.target);
-  });
-},{threshold:.15});
-document.querySelectorAll('h2').forEach(el=>{
-  el.style.opacity='0';el.style.clipPath='inset(0 0 100% 0)';
-  el.style.transition='opacity .5s,clip-path .8s cubic-bezier(.16,1,.3,1)';
-  h2io.observe(el);
-});
-
-/* Counter */
-function count(el){
-  const n=parseFloat(el.dataset.count);const pre=el.dataset.prefix||'';const suf=el.dataset.suffix||'';
-  const fl=el.dataset.count&&el.dataset.count.includes('.');
-  const dur=1400,steps=45;let i=0;const ease=t=>1-Math.pow(1-t,3);
-  const tm=setInterval(()=>{
-    i++;const v=n*ease(i/steps);
-    el.textContent=pre+(fl?v.toFixed(1):Math.round(v))+suf;
-    if(i>=steps){el.textContent=pre+(fl?n.toFixed(1):n)+suf;clearInterval(tm)}
-  },dur/steps);
-}
-const cio=new IntersectionObserver(entries=>{
-  entries.forEach(en=>{if(en.isIntersecting){count(en.target);cio.unobserve(en.target)}});
-},{threshold:.5});
-document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
-
-/* Parallax */
-const vid=document.querySelector('.hero-bg video,.hero-bg img');
-window.addEventListener('scroll',()=>{if(vid)vid.style.transform=`translateY(${scrollY*.2}px) scale(1.04)`},{passive:true});
 </script>
 </body>
 </html>
