@@ -350,7 +350,7 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
 
   <div class="loans-grid" id="loans-grid">
 
-    <div class="loan-card featured">
+    <div class="loan-card featured" data-days="7,14,30" data-type="0">
       <div class="loan-top"><div class="loan-name">АДеньги</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
@@ -360,17 +360,17 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
       <a href="https://adsfin.ru/amoney" target="_blank" class="btn btn-w btn-full">Получить →</a>
     </div>
 
-    <div class="loan-card featured">
+    <div class="loan-card featured" data-days="14,30" data-type="0,interest">
       <div class="loan-top"><div class="loan-name">Moneyman</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
+        <div class="ls-item"><div class="ls-val">14–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
       <div class="loan-tag">Одобрение за 2 минуты · 30 дней</div>
       <a href="https://adsfin.ru/moneyman" target="_blank" class="btn btn-w btn-full">Получить →</a>
     </div>
 
-    <div class="loan-card featured">
+    <div class="loan-card featured" data-days="7,14,30" data-type="0">
       <div class="loan-top"><div class="loan-name">Умные Наличные</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
@@ -380,17 +380,17 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
       <a href="https://adsfin.ru/umnal" target="_blank" class="btn btn-w btn-full">Получить →</a>
     </div>
 
-    <div class="loan-card featured">
+    <div class="loan-card featured" data-days="7,14" data-type="0">
       <div class="loan-top"><div class="loan-name">MaxCredit</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
+        <div class="ls-item"><div class="ls-val">7–14 дн</div><div class="ls-label">Срок</div></div>
       </div>
-      <div class="loan-tag">Без проверки истории · 30 дней</div>
+      <div class="loan-tag">Без проверки истории · 14 дней</div>
       <a href="https://adsfin.ru/maxcred" target="_blank" class="btn btn-w btn-full">Получить →</a>
     </div>
 
-    <div class="loan-card featured">
+    <div class="loan-card featured" data-days="7,14,30" data-type="0,interest">
       <div class="loan-top"><div class="loan-name">Webbankir</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
@@ -400,11 +400,11 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
       <a href="https://adsfin.ru/web" target="_blank" class="btn btn-w btn-full">Получить →</a>
     </div>
 
-    <div class="loan-card featured">
+    <div class="loan-card featured" data-days="14,30" data-type="0">
       <div class="loan-top"><div class="loan-name">Свои люди</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
+        <div class="ls-item"><div class="ls-val">14–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
       <div class="loan-tag">Без справок о доходах · 30 дней</div>
       <a href="https://adsfin.ru/speople" target="_blank" class="btn btn-w btn-full">Получить →</a>
@@ -637,9 +637,46 @@ window.addEventListener('scroll', () => {
 });
 
 /* ── FILTER ── */
+const activeFilters = { days: '7', type: '0' };
+
 function setFilter(el, group, val) {
   el.closest('.filter-chips').querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
   el.classList.add('active');
+  activeFilters[group === 'срок' ? 'days' : 'type'] = val;
+  applyFilters();
+}
+
+function applyFilters() {
+  const cards = document.querySelectorAll('#loans-grid .loan-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const days = card.dataset.days ? card.dataset.days.split(',') : [];
+    const types = card.dataset.type ? card.dataset.type.split(',') : [];
+    const dayMatch = days.includes(activeFilters.days);
+    const typeMatch = types.includes(activeFilters.type);
+    const show = dayMatch && typeMatch;
+    card.style.transition = 'opacity .3s ease, transform .3s ease';
+    if (show) {
+      card.style.opacity = '1';
+      card.style.transform = '';
+      card.style.display = 'flex';
+      visible++;
+    } else {
+      card.style.opacity = '0';
+      card.style.transform = 'scale(.97)';
+      setTimeout(() => { if(card.style.opacity === '0') card.style.display = 'none'; }, 300);
+    }
+  });
+  // show empty state if no cards
+  let empty = document.getElementById('loans-empty');
+  if (!empty) {
+    empty = document.createElement('div');
+    empty.id = 'loans-empty';
+    empty.style.cssText = 'grid-column:1/-1;text-align:center;padding:48px;color:rgba(255,255,255,.3);font-size:.85rem;display:none';
+    empty.textContent = 'Нет предложений по выбранным параметрам';
+    document.getElementById('loans-grid').appendChild(empty);
+  }
+  empty.style.display = visible === 0 ? 'block' : 'none';
 }
 
 /* ── FAQ ── */
