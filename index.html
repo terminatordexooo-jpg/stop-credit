@@ -112,7 +112,7 @@ h2 em{font-style:normal;color:var(--w3)}
 .filter-sep{width:1px;height:24px;background:var(--b);flex-shrink:0}
 
 /* ── LOAN CARDS ── */
-.loans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.loans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
 .loan-card{background:var(--card);border:1px solid var(--b);border-radius:14px;padding:20px;transition:all .25s;position:relative;overflow:hidden;display:flex;flex-direction:column}
 .loan-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
 .loan-card:hover{border-color:var(--b2);transform:translateY(-3px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
@@ -214,6 +214,9 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
 @media(max-width:1100px){
   .loans-grid{grid-template-columns:repeat(2,1fr)}
 }
+@media(max-width:740px){
+  .loans-grid{grid-template-columns:1fr}
+}
 @media(max-width:1000px){
   .hero-inner{grid-template-columns:1fr;padding:100px 24px 60px}
   .hero-cards{display:none}
@@ -299,31 +302,18 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
 <!-- PARTNER LOGOS -->
 <div class="partners">
   <div class="partners-track">
-    <span class="partner-name">Webbankir</span>
-    <span class="partner-name">Bistrodengi</span>
-    <span class="partner-name">Credit7</span>
-    <span class="partner-name">Dozarplaty</span>
-    <span class="partner-name">Skela</span>
-    <span class="partner-name">Займер</span>
-    <span class="partner-name">MaxCredit</span>
-    <span class="partner-name">WebZaym</span>
     <span class="partner-name">АДеньги</span>
-    <span class="partner-name">ZaymiGo</span>
-    <span class="partner-name">НаДом</span>
-    <span class="partner-name">UM Finance</span>
-    <!-- duplicate for seamless loop -->
-    <span class="partner-name">Webbankir</span>
-    <span class="partner-name">Bistrodengi</span>
-    <span class="partner-name">Credit7</span>
-    <span class="partner-name">Dozarplaty</span>
-    <span class="partner-name">Skela</span>
-    <span class="partner-name">Займер</span>
+    <span class="partner-name">Moneyman</span>
+    <span class="partner-name">Умные Наличные</span>
     <span class="partner-name">MaxCredit</span>
-    <span class="partner-name">WebZaym</span>
+    <span class="partner-name">Webbankir</span>
+    <span class="partner-name">Свои люди</span>
     <span class="partner-name">АДеньги</span>
-    <span class="partner-name">ZaymiGo</span>
-    <span class="partner-name">НаДом</span>
-    <span class="partner-name">UM Finance</span>
+    <span class="partner-name">Moneyman</span>
+    <span class="partner-name">Умные Наличные</span>
+    <span class="partner-name">MaxCredit</span>
+    <span class="partner-name">Webbankir</span>
+    <span class="partner-name">Свои люди</span>
   </div>
 </div>
 
@@ -361,13 +351,33 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
   <div class="loans-grid" id="loans-grid">
 
     <div class="loan-card featured">
-      <div class="loan-top"><div class="loan-name">Займер</div><div class="loan-badge">0%</div></div>
+      <div class="loan-top"><div class="loan-name">АДеньги</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
         <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
       <div class="loan-tag">Первый займ бесплатно · 30 дней</div>
-      <a href="#contact" class="btn btn-w btn-full">Получить →</a>
+      <a href="https://adsfin.ru/amoney" target="_blank" class="btn btn-w btn-full">Получить →</a>
+    </div>
+
+    <div class="loan-card featured">
+      <div class="loan-top"><div class="loan-name">Moneyman</div><div class="loan-badge">0%</div></div>
+      <div class="loan-stats">
+        <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
+        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
+      </div>
+      <div class="loan-tag">Одобрение за 2 минуты · 30 дней</div>
+      <a href="https://adsfin.ru/moneyman" target="_blank" class="btn btn-w btn-full">Получить →</a>
+    </div>
+
+    <div class="loan-card featured">
+      <div class="loan-top"><div class="loan-name">Умные Наличные</div><div class="loan-badge">0%</div></div>
+      <div class="loan-stats">
+        <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
+        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
+      </div>
+      <div class="loan-tag">Только паспорт · 30 дней</div>
+      <a href="https://adsfin.ru/umnal" target="_blank" class="btn btn-w btn-full">Получить →</a>
     </div>
 
     <div class="loan-card featured">
@@ -377,68 +387,29 @@ footer{padding:56px 52px 32px;border-top:1px solid var(--b);background:var(--s1)
         <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
       <div class="loan-tag">Без проверки истории · 30 дней</div>
-      <a href="#contact" class="btn btn-w btn-full">Получить →</a>
+      <a href="https://adsfin.ru/maxcred" target="_blank" class="btn btn-w btn-full">Получить →</a>
     </div>
 
     <div class="loan-card featured">
-      <div class="loan-top"><div class="loan-name">WebZaym</div><div class="loan-badge">0%</div></div>
-      <div class="loan-stats">
-        <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
-      </div>
-      <div class="loan-tag">Одобрение за 2 минуты · 30 дней</div>
-      <a href="#contact" class="btn btn-w btn-full">Получить →</a>
-    </div>
-
-    <div class="loan-card featured">
-      <div class="loan-top"><div class="loan-name">АДеньги</div><div class="loan-badge">0%</div></div>
-      <div class="loan-stats">
-        <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
-      </div>
-      <div class="loan-tag">Только паспорт · 30 дней</div>
-      <a href="#contact" class="btn btn-w btn-full">Получить →</a>
-    </div>
-
-    <div class="loan-card">
-      <div class="loan-top"><div class="loan-name">Skela</div><div class="loan-badge new">Новый</div></div>
+      <div class="loan-top"><div class="loan-name">Webbankir</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
         <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
       <div class="loan-tag">Моментальное решение · 30 дней</div>
-      <a href="#contact" class="btn btn-o btn-full">Получить →</a>
+      <a href="https://adsfin.ru/web" target="_blank" class="btn btn-w btn-full">Получить →</a>
     </div>
 
-    <div class="loan-card">
-      <div class="loan-top"><div class="loan-name">ZaymiGo</div><div class="loan-badge new">Новый</div></div>
+    <div class="loan-card featured">
+      <div class="loan-top"><div class="loan-name">Свои люди</div><div class="loan-badge">0%</div></div>
       <div class="loan-stats">
         <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
         <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
       </div>
       <div class="loan-tag">Без справок о доходах · 30 дней</div>
-      <a href="#contact" class="btn btn-o btn-full">Получить →</a>
+      <a href="https://adsfin.ru/speople" target="_blank" class="btn btn-w btn-full">Получить →</a>
     </div>
 
-    <div class="loan-card">
-      <div class="loan-top"><div class="loan-name">НаДом</div><div class="loan-badge new">Новый</div></div>
-      <div class="loan-stats">
-        <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
-      </div>
-      <div class="loan-tag">Выдача на карту · 30 дней</div>
-      <a href="#contact" class="btn btn-o btn-full">Получить →</a>
-    </div>
-
-    <div class="loan-card">
-      <div class="loan-top"><div class="loan-name">UM Finance</div><div class="loan-badge new">Новый</div></div>
-      <div class="loan-stats">
-        <div class="ls-item"><div class="ls-val">0%</div><div class="ls-label">Ставка</div></div>
-        <div class="ls-item"><div class="ls-val">7–30 дн</div><div class="ls-label">Срок</div></div>
-      </div>
-      <div class="loan-tag">Круглосуточно онлайн · 30 дней</div>
-      <a href="#contact" class="btn btn-o btn-full">Получить →</a>
-    </div>
 
   </div>
 </div>
